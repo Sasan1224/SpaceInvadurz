@@ -10,12 +10,11 @@ import ressources.Constantes;
 
 public class TiroPlayer extends Entite {
 	
-/**** VARIABLES ****/	
+
 	
 	private boolean PlayerTire = false;
 	
 
-	/**** CONSTRUCTEUR ****/	
 	
 	public TiroPlayer() {
 		
@@ -35,7 +34,6 @@ public class TiroPlayer extends Entite {
 		super.img = this.ico.getImage();
 	}
 	
-	/**** METHODES ****/
 	public boolean isPlayerTire() {return PlayerTire;}
 
 	public void setPlayerTire(boolean PlayerTire) {this.PlayerTire = PlayerTire;}

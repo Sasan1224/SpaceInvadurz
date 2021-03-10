@@ -19,7 +19,7 @@ import ressources.Constantes;
 
 public class Scene extends JPanel {
 	
-/**** VARIABLES ****/	
+
 	
 	public Player player = new Player();
 	public GrupoAliens grupoAliens = new GrupoAliens();
@@ -36,7 +36,7 @@ public class Scene extends JPanel {
 	
 	public int score = 0;
 	
-/**** CONSTRUCTEUR ****/
+
 	
 	public Scene() {
 		super();
@@ -58,8 +58,7 @@ public class Scene extends JPanel {
 		chronoEcran.start();
 	}
 
-		
-/**** METHODES ****/
+
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);

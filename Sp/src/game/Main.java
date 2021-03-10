@@ -6,13 +6,12 @@ import ressources.Constantes;
 
 public class Main {
 	
-/**** VARIABLES ****/
-	
+
 	public static Scene scene;
 	public static boolean game = true;
 	
 	
-/**** METHODES ****/
+
 	public static void main(String[] args) {
 		
 		JFrame screen = new JFrame("Space Invaders");

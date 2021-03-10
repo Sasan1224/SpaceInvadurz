@@ -12,37 +12,31 @@ import ressources.Constantes;
 
 public class TiroAlien extends Entite {
 
-/**** VARIABLES ****/	
-	
+
 	Random hasard = new Random();
 
 
-/**** CONSTRUCTEUR ****/	
-	
 	public TiroAlien(int [] tabPositionAlien) {
 		
-		// Initialisation des variables de la super classe
+		
 		super.xPos = tabPositionAlien[0] + Constantes.LARGO_ALIEN /2 - 1;
 		super.yPos = tabPositionAlien[1] + Constantes.ALTO_ALIEN;
 		super.largo = Constantes.LARGO_TIRO_ALIEN;
 		super.alto = Constantes.ALTO_TIRO_ALIEN;
 		super.dx = 0;
 		super.dy = Constantes.DY_TIRO_ALIEN;
-		// Adresse des images du vaisseau
+		
 		super.strImg1 = "/images/tirAlien1.png";
 		super.strImg2 = "/images/tirAlien2.png";
 		super.strImg3 = "";
-		// Chargement de l'image du tir de l'alien
+		
 		if(hasard.nextInt(2) == 0) {
 			super.ico = new ImageIcon(getClass().getResource(super.strImg1));}
 		else {super.ico = new ImageIcon(getClass().getResource(super.strImg2));}
 		super.img = this.ico.getImage();
 	}
 	
-	
-/**** METHODES ****/
-	
-	public int deplacementTirAlien() {
+		public int deplacementTirAlien() {
 		if(Chrono.compteTours % 4 == 0) {
 			if(this.yPos < 600) {this.yPos = this.yPos + Constantes.DY_TIRO_ALIEN;}			
 		}
@@ -54,13 +48,13 @@ public class TiroAlien extends Entite {
 	}		
 	
 	private boolean tirAlienAHauteurDeChateau() { 
-		// Renvoie vrai si le tir du vaisseau est à hauteur des châteaux
+
 		if(this.yPos < Constantes.Y_POS_HOME + Constantes.ALTO_HOME && this.yPos + this.alto > Constantes.Y_POS_HOME) {return true;}
 		else {return false;}	
 	}
 	
 	private int chateauProche() {
-		// Renvoie le numéro du château (0,1,2 ou 3) dans la zone de tir du vaisseau
+		
 		int numeroChateau = -1;
 		int colonne = -1;
 		while (numeroChateau == -1 && colonne < 4) {

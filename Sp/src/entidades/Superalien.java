@@ -10,7 +10,6 @@ import ressources.Constantes;
 
 public class Superalien extends Entite {
 
-	/**** VARIABLES ****/
 
 	public Audio musiqueSoucoupe = new Audio("/sons/sonSoucoupePasse.wav");
 	public Audio musiqueDestructionSoucoupe = new Audio("/sons/sonDestructionSoucoupe.wav");
@@ -18,21 +17,20 @@ public class Superalien extends Entite {
 	private int contador = 0;
 	
 	
-/**** CONSTRUCTEUR ****/
-	
+
 	public Superalien() {		
-		// Initialisation des variables de la classe mère
+		
 		super.xPos = Constantes.X_POS_INIT_SUPERALIEN;
 		super.yPos = Constantes.Y_POS_SUPERALIEN;
 		super.largo = Constantes.LARGO_SUPERALIEN;
 		super.alto = Constantes.ALTO_SUPERALIEN;
 		super.dx = Constantes.DX_SUPERALIEN;
 		super.dy = 0;
-		// Adresse des images du vaisseau
+	
 		this.strImg1 = "/images/soucoupe.png";
 		this.strImg2 = "/images/soucoupe100.png";
 		this.strImg3 = "";
-		// Chargement de l'image du vaisseau
+
 		super.ico = new ImageIcon(getClass().getResource(strImg1));
 		super.img = this.ico.getImage();
 		super.alive = true;
@@ -45,7 +43,7 @@ public class Superalien extends Entite {
 /**** METHODES ****/	
 	
 	public int despSuperalien() {
-		// Renvoie la nouvelle position de la soucoupe après déplacement éventuel
+
 		if(this.alive && Chrono.compteTours % 2 == 0) {
 			if (this.xPos > 0) {this.xPos = this.xPos - this.dx;}
 			else {this.xPos = Constantes.X_POS_INIT_SUPERALIEN;}	

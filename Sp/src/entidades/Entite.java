@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 
 public abstract class Entite {
 
-/**** VARIABLES ****/	
+
 	
 	protected int largo, alto, xPos, yPos, dx, dy;
 	protected boolean alive;
@@ -14,13 +14,7 @@ public abstract class Entite {
 	protected ImageIcon ico;
 	protected Image img;
 		
-	
-/**** CONSTRUCTEUR ****/
-	
-	
-	
-	
-/**** METHODES ****/
+
 	public int getLargo() {return largo;}
 	
 	public void setLargo(int largo) {

@@ -10,7 +10,7 @@ import ressources.Constantes;
 
 public class GrupoAliens {
 
-/**** VARIABLES ****/	
+
 
 	
 	private Alien tabAlien[][] = new Alien [5][10];
@@ -26,7 +26,7 @@ public class GrupoAliens {
 	private int compteurSonAlien = 0;
 	
 	
-/**** CONSTRUCTEUR ****/
+
 	
 	public GrupoAliens() {	
 		
@@ -37,20 +37,20 @@ public class GrupoAliens {
 	}
 
 	
-/**** METHODES ****/
+
 		
 	private void initTableauAliens() {
 		
-		for(int colonne=0; colonne<10; colonne++) {
-			this.tabAlien[0][colonne] = new Alien(Constantes.X_POS_INIT_ALIEN + (Constantes.LARGO_ALIEN + Constantes.DIF_COLUMNAS_ALIEN) * colonne, 
+		for(int columna=0; columna<10; columna++) {
+			this.tabAlien[0][columna] = new Alien(Constantes.X_POS_INIT_ALIEN + (Constantes.LARGO_ALIEN + Constantes.DIF_COLUMNAS_ALIEN) * columna, 
 					Constantes.ALT_INIT_ALIEN, "/images/alienHaut1.png", "/images/alienHaut2.png");
-			for(int ligne=1; ligne<3; ligne++) {
-				this.tabAlien[ligne][colonne] = new Alien(Constantes.X_POS_INIT_ALIEN + (Constantes.LARGO_ALIEN + Constantes.DIF_COLUMNAS_ALIEN) *
-						colonne, Constantes.ALT_INIT_ALIEN + Constantes.DIF_LINEAS_ALIEN * ligne, "/images/alienMilieu1.png", "/images/alienMilieu2.png");
+			for(int linea=1; linea<3; linea++) {
+				this.tabAlien[linea][columna] = new Alien(Constantes.X_POS_INIT_ALIEN + (Constantes.LARGO_ALIEN + Constantes.DIF_COLUMNAS_ALIEN) *
+						columna, Constantes.ALT_INIT_ALIEN + Constantes.DIF_LINEAS_ALIEN * linea, "/images/alienMilieu1.png", "/images/alienMilieu2.png");
 			}
-			for(int ligne=3; ligne<5; ligne++) {	
-				this.tabAlien[ligne][colonne] = new Alien(Constantes.X_POS_INIT_ALIEN + (Constantes.LARGO_ALIEN + Constantes.DIF_COLUMNAS_ALIEN)
-					* colonne, Constantes.ALT_INIT_ALIEN + Constantes.DIF_LINEAS_ALIEN * ligne, "/images/alienBas1.png", "/images/alienBas2.png");
+			for(int linea=3; linea<5; linea++) {	
+				this.tabAlien[linea][columna] = new Alien(Constantes.X_POS_INIT_ALIEN + (Constantes.LARGO_ALIEN + Constantes.DIF_COLUMNAS_ALIEN)
+					* columna, Constantes.ALT_INIT_ALIEN + Constantes.DIF_LINEAS_ALIEN * linea, "/images/alienBas1.png", "/images/alienBas2.png");
 			}	
 		}
 	}
@@ -58,11 +58,11 @@ public class GrupoAliens {
 	public void dessinAliens(Graphics g) {
 		if(Chrono.compteTours % (100 - 10 * this.vitesse) == 0) {this.deplacementAliens();}
 		
-		for(int colonne=0; colonne<10; colonne++) {
-			for(int ligne=0; ligne<5; ligne++) {
-				if(this.tabAlien[ligne][colonne] != null) {
-					this.tabAlien[ligne][colonne].choixImage(pos1);
-					g.drawImage(this.tabAlien[ligne][colonne].getImg(), this.tabAlien[ligne][colonne].getxPos(), this.tabAlien[ligne][colonne].getyPos(),
+		for(int columna=0; columna<10; columna++) {
+			for(int linea=0; linea<5; linea++) {
+				if(this.tabAlien[linea][columna] != null) {
+					this.tabAlien[linea][columna].choixImage(pos1);
+					g.drawImage(this.tabAlien[linea][columna].getImg(), this.tabAlien[linea][columna].getxPos(), this.tabAlien[linea][columna].getyPos(),
 						null);
 				}
 			}
@@ -72,10 +72,10 @@ public class GrupoAliens {
 	private boolean touchBordeIzq() {
 		
 		boolean reponse = false;
-		for(int colonne=0; colonne<10; colonne++) {
-			for(int ligne=0; ligne<5; ligne++) {
-				if(this.tabAlien[ligne][colonne] != null) {
-					if(this.tabAlien[ligne][colonne].getxPos() < Constantes.MARCO_SCREEN){
+		for(int columna=0; columna<10; columna++) {
+			for(int linea=0; linea<5; linea++) {
+				if(this.tabAlien[linea][columna] != null) {
+					if(this.tabAlien[linea][columna].getxPos() < Constantes.MARCO_SCREEN){
 						reponse = true;
 						break;
 					}
@@ -88,10 +88,10 @@ public class GrupoAliens {
 	private boolean touchBordeDer() {
 	
 		boolean reponse = false;
-		for(int colonne=0; colonne<10; colonne++) {
-			for(int ligne=0; ligne<5; ligne++) {
-				if(this.tabAlien[ligne][colonne] != null) {
-					if(this.tabAlien[ligne][colonne].getxPos() > 
+		for(int columna=0; columna<10; columna++) {
+			for(int linea=0; linea<5; linea++) {
+				if(this.tabAlien[linea][columna] != null) {
+					if(this.tabAlien[linea][columna].getxPos() > 
 					Constantes.LARGO_SCREEN - Constantes.LARGO_ALIEN - Constantes.DX_ALIEN - Constantes.MARCO_SCREEN) {
 						reponse = true;
 						break;
@@ -103,12 +103,12 @@ public class GrupoAliens {
 	}
 	
 	public void alienTourneEtDescend() {
-		// Méthode qui change le sens de déplacement de l'alien et le descend d'un cran
+		
 		if(this.touchBordeDer() == true) {			
-			for(int colonne=0; colonne<10; colonne++) {
-				for(int ligne=0; ligne<5; ligne++) {
-					if(this.tabAlien[ligne][colonne] != null) {
-						this.tabAlien[ligne][colonne].setyPos(this.tabAlien[ligne][colonne].getyPos() + Constantes.DY_ALIEN);
+			for(int columna=0; columna<10; columna++) {
+				for(int linea=0; linea<5; linea++) {
+					if(this.tabAlien[linea][columna] != null) {
+						this.tabAlien[linea][columna].setyPos(this.tabAlien[linea][columna].getyPos() + Constantes.DY_ALIEN);
 					}
 				}
 			}
@@ -116,11 +116,11 @@ public class GrupoAliens {
 			if(this.vitesse < 9) {this.vitesse++;}
 		} else {
 			if(this.touchBordeIzq() == true) {			
-				for(int colonne=0; colonne<10; colonne++) {
-					for(int ligne=0; ligne<5; ligne++) {
-						if(this.tabAlien[ligne][colonne] != null) {
-						this.tabAlien[ligne][colonne].setyPos(
-							this.tabAlien[ligne][colonne].getyPos() + Constantes.DY_ALIEN);
+				for(int columna=0; columna<10; columna++) {
+					for(int linea=0; linea<5; linea++) {
+						if(this.tabAlien[linea][columna] != null) {
+						this.tabAlien[linea][columna].setyPos(
+							this.tabAlien[linea][columna].getyPos() + Constantes.DY_ALIEN);
 						}
 					}
 				}
@@ -137,18 +137,18 @@ public class GrupoAliens {
 			tabAlienMort[0] = -1; 
 		}
 		if(this.vaADroite == true) { 
-			for(int colonne=0; colonne<10; colonne++) {
-				for(int ligne=0; ligne<5; ligne++) {	
-					if(this.tabAlien[ligne][colonne] != null) {
-						this.tabAlien[ligne][colonne].setxPos(this.tabAlien[ligne][colonne].getxPos() + Constantes.DX_ALIEN);
+			for(int columna=0; columna<10; columna++) {
+				for(int linea=0; linea<5; linea++) {	
+					if(this.tabAlien[linea][columna] != null) {
+						this.tabAlien[linea][columna].setxPos(this.tabAlien[linea][columna].getxPos() + Constantes.DX_ALIEN);
 					}
 				}
 			}
 		}else{ 
-			for(int colonne=0; colonne<10; colonne++) {
-				for(int ligne=0; ligne<5; ligne++) {
-					if(this.tabAlien[ligne][colonne] != null) {
-						this.tabAlien[ligne][colonne].setxPos(this.tabAlien[ligne][colonne].getxPos() - Constantes.DX_ALIEN);
+			for(int columna=0; columna<10; columna++) {
+				for(int linea=0; linea<5; linea++) {
+					if(this.tabAlien[linea][columna] != null) {
+						this.tabAlien[linea][columna].setxPos(this.tabAlien[linea][columna].getxPos() - Constantes.DX_ALIEN);
 					}
 				}
 			}
@@ -166,18 +166,18 @@ public class GrupoAliens {
 	
 	public void tirVaisseauToucheAlien(TiroPlayer tiroPlayer) {
 		
-		for(int colonne=0; colonne<10; colonne++) {
-			for(int ligne=0; ligne<5; ligne++) {
-				if(this.tabAlien[ligne][colonne] != null) {
-					if(tiroPlayer.tueAlien(this.tabAlien[ligne][colonne]) == true) {
-						this.tabAlien[ligne][colonne].alive = false; 
+		for(int columna=0; columna<10; columna++) {
+			for(int linea=0; linea<5; linea++) {
+				if(this.tabAlien[linea][columna] != null) {
+					if(tiroPlayer.tueAlien(this.tabAlien[linea][columna]) == true) {
+						this.tabAlien[linea][columna].alive = false; 
 						tiroPlayer.yPos = -1; 
 						
-						this.tabAlienMort[0] = ligne;
-						this.tabAlienMort[1] = colonne; 
-						if(ligne == 0) {
+						this.tabAlienMort[0] = linea;
+						this.tabAlienMort[1] = columna; 
+						if(linea == 0) {
 							Main.scene.score = Main.scene.score + Constantes.VALOR_ALIEN_UP;}
-						else if(ligne>0 && ligne<3) {
+						else if(linea>0 && linea<3) {
 							Main.scene.score = Main.scene.score + Constantes.VALOR_ALIEN_MIDDLE;}
 						else {
 							Main.scene.score = Main.scene.score + Constantes.VALOR_ALIEN_DOWN;}	
@@ -198,11 +198,11 @@ public class GrupoAliens {
 	
 		int positionAlien[] = {-1,-1};		
 		if(this.nombreAliens != 0) { 
-			do {int colonne = hasard.nextInt(10); 
-				for(int ligne=4;ligne>=0;ligne--) {
-					if(tabAlien[ligne][colonne]!= null) {
-						positionAlien[0] = this.tabAlien[ligne][colonne].getxPos();
-						positionAlien[1] = this.tabAlien[ligne][colonne].getyPos();
+			do {int columna = hasard.nextInt(10); 
+				for(int linea=4;linea>=0;linea--) {
+					if(tabAlien[linea][columna]!= null) {
+						positionAlien[0] = this.tabAlien[linea][columna].getxPos();
+						positionAlien[1] = this.tabAlien[linea][columna].getyPos();
 						break;
 					}
 				}
@@ -212,10 +212,10 @@ public class GrupoAliens {
 	}
 	
 	private void joueSonAlien() { 
-		int compteur = this.compteurSonAlien % 4;
-		if(compteur==0) {Audio.playSound("/sons/sonAlien1.wav");}
-		else if(compteur==1) {Audio.playSound("/sons/sonAlien2.wav");}
-		else if(compteur==2) {Audio.playSound("/sons/sonAlien3.wav");}
+		int contador = this.compteurSonAlien % 4;
+		if(contador==0) {Audio.playSound("/sons/sonAlien1.wav");}
+		else if(contador==1) {Audio.playSound("/sons/sonAlien2.wav");}
+		else if(contador==2) {Audio.playSound("/sons/sonAlien3.wav");}
 		else {Audio.playSound("/sons/sonAlien4.wav");}
 	}
 	
@@ -224,10 +224,10 @@ public class GrupoAliens {
 	public int positionAlienLePlusBas() {
 		
 		int posBas = 0, posBasFinal = 0;
-		for(int colonne=1; colonne<10;colonne++) {
-			for(int ligne=4; ligne>=0;ligne--) {
-				if(this.tabAlien[ligne][colonne] != null) {
-					posBas = this.tabAlien[ligne][colonne].yPos + this.tabAlien[ligne][colonne].alto;
+		for(int columna=1; columna<10;columna++) {
+			for(int linea=4; linea>=0;linea--) {
+				if(this.tabAlien[linea][columna] != null) {
+					posBas = this.tabAlien[linea][columna].yPos + this.tabAlien[linea][columna].alto;
 					break;
 				}			
 			}

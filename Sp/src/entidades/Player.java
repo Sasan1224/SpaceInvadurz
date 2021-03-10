@@ -10,10 +10,10 @@ import ressources.Constantes;
 
 public class Player extends Entite {
 	
-	/**** VARIABLES ****/
+
 	private int contador = 0;
 	
-	/**** CONSTRUCTEUR ****/
+	
 		
 		public Player() {
 			

@@ -6,12 +6,11 @@ import javax.sound.sampled.Clip;
 
 public class Audio {
 	
-/**** VARIABLES ****/
+
 	
 	private Clip clip;
 		
 	
-/**** CONSTRUCTEUR ****/
 	
 	public Audio(String son){
 				
@@ -24,7 +23,7 @@ public class Audio {
 	}
 		
 	
-/**** METHODES ****/
+
 	
 	public Clip getClip(){return clip;}
 				
